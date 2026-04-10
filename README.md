@@ -1,4 +1,4 @@
-# AutoTest — Sauce Demo (Playwright)
+# swag-labs-test — Sauce Demo (Playwright)
 
 End-to-end tests for [Swag Labs](https://www.saucedemo.com/) using [Playwright](https://playwright.dev/).
 
@@ -12,7 +12,7 @@ End-to-end tests for [Swag Labs](https://www.saucedemo.com/) using [Playwright](
 From the project root:
 
 ```powershell
-cd c:\Users\Admin\Documents\AutoTest
+cd c:\Users\Admin\Documents\swag-labs-test
 npm install
 npx playwright install
 ```
@@ -64,7 +64,7 @@ This repo is intended to live at **`automation-test-Swag-Labs`** on your GitHub 
 **Option A — GitHub CLI** (after [installing `gh`](https://cli.github.com/)):
 
 ```powershell
-cd c:\Users\Admin\Documents\AutoTest
+cd c:\Users\Admin\Documents\swag-labs-test
 gh auth login
 gh repo create automation-test-Swag-Labs --public --source=. --remote=origin --push
 ```
@@ -77,7 +77,7 @@ Use `--private` instead of `--public` if you want a private repository.
 2. Add the remote (replace `YOUR_GITHUB_USERNAME` with your username or organization):
 
    ```powershell
-   cd c:\Users\Admin\Documents\AutoTest
+   cd c:\Users\Admin\Documents\swag-labs-test
    git remote add origin https://github.com/YOUR_GITHUB_USERNAME/automation-test-Swag-Labs.git
    git push -u origin main
    ```
