@@ -14,10 +14,10 @@ From the project root:
 ```powershell
 cd c:\Users\Admin\Documents\AutoTest
 npm install
-npx playwright install chromium
+npx playwright install
 ```
 
-The first command installs `@playwright/test`. The second downloads the Chromium browser Playwright uses (only needed once per machine).
+The first command installs `@playwright/test`. The second downloads **Chromium, Firefox, and WebKit** that Playwright uses (only needed once per machine). To install a single engine: `npx playwright install chromium` (or `firefox`, `webkit`).
 
 ## Run tests
 
@@ -25,14 +25,17 @@ The first command installs `@playwright/test`. The second downloads the Chromium
 npm test
 ```
 
-On a clean checkout, this runs **2 tests** (HP_01 and NEG_Login_01) in Chromium. A recent local run completed in about 5 seconds with both passing.
+By default, `npm test` runs **every spec in all configured browsers** (Chromium, Firefox, WebKit), so you get **6 runs** for the two scenarios (2 tests × 3 browsers).
 
 Other scripts:
 
 | Command | Description |
 |--------|-------------|
-| `npm test` | Run all tests (headless Chromium) |
-| `npm run test:headed` | Run with a visible browser |
+| `npm test` | Run all tests in **Chromium, Firefox, and WebKit** (headless) |
+| `npm run test:chromium` | Run tests in Chromium only |
+| `npm run test:firefox` | Run tests in Firefox only |
+| `npm run test:webkit` | Run tests in WebKit only |
+| `npm run test:headed` | Run all projects with a visible browser |
 | `npm run test:ui` | Open the Playwright UI runner |
 
 After a run, open the HTML report:
@@ -50,7 +53,7 @@ npx playwright show-report
 
 ## Project layout
 
-- `playwright.config.ts` — base URL, `data-test` as test id attribute, Chromium project
+- `playwright.config.ts` — base URL, `data-test` as test id attribute, Chromium / Firefox / WebKit projects
 - `tests/saucedemo.spec.ts` — spec file for the cases above
 - `package.json` — dependencies and npm scripts
 
@@ -82,5 +85,5 @@ Use `--private` instead of `--public` if you want a private repository.
 ## Troubleshooting
 
 - **`npm` is not recognized** — Install Node.js and restart the terminal (or add Node to your PATH). On Windows you can use `winget install OpenJS.NodeJS.LTS` (UAC may be required). As an alternative, download the Windows x64 **zip** from [Node.js downloads](https://nodejs.org/en/download/), extract it (for example under `.tools/` in this repo; that folder is gitignored), and prepend that folder to `PATH` for the session before running `npm install` and `npm test`.
-- **Browser not installed** — Run `npx playwright install chromium`.
+- **Browser not installed** — Run `npx playwright install` (all browsers) or `npx playwright install chromium firefox webkit`.
 - **Timeouts or flakes** — Sauce Demo is a public demo; retries are enabled in CI via `playwright.config.ts`. For local debugging, use `npm run test:headed` or `npm run test:ui`.
