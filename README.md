@@ -54,6 +54,31 @@ npx playwright show-report
 - `tests/saucedemo.spec.ts` — spec file for the cases above
 - `package.json` — dependencies and npm scripts
 
+## Push to GitHub
+
+This repo is intended to live at **`automation-test-Swag-Labs`** on your GitHub account. The project is already committed locally on branch `main`.
+
+**Option A — GitHub CLI** (after [installing `gh`](https://cli.github.com/)):
+
+```powershell
+cd c:\Users\Admin\Documents\AutoTest
+gh auth login
+gh repo create automation-test-Swag-Labs --public --source=. --remote=origin --push
+```
+
+Use `--private` instead of `--public` if you want a private repository.
+
+**Option B — Git only**
+
+1. On GitHub, create a new empty repository named `automation-test-Swag-Labs` (no README, no `.gitignore` template).
+2. Add the remote (replace `YOUR_GITHUB_USERNAME` with your username or organization):
+
+   ```powershell
+   cd c:\Users\Admin\Documents\AutoTest
+   git remote add origin https://github.com/YOUR_GITHUB_USERNAME/automation-test-Swag-Labs.git
+   git push -u origin main
+   ```
+
 ## Troubleshooting
 
 - **`npm` is not recognized** — Install Node.js and restart the terminal (or add Node to your PATH). On Windows you can use `winget install OpenJS.NodeJS.LTS` (UAC may be required). As an alternative, download the Windows x64 **zip** from [Node.js downloads](https://nodejs.org/en/download/), extract it (for example under `.tools/` in this repo; that folder is gitignored), and prepend that folder to `PATH` for the session before running `npm install` and `npm test`.
